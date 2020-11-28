@@ -21,10 +21,10 @@ CREATE TABLE Cupom(
     PalavraChave VARCHAR(100)
 );
 
-CREATE TABLE Fotos(
+CREATE TABLE Foto(
 	IdFotos INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     
-    
+    UrlImagem VARCHAR(512),
     FraseFoto VARCHAR(60)
 );
 
