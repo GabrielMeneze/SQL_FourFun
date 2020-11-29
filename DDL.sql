@@ -22,7 +22,7 @@ CREATE TABLE Cupom(
 );
 
 CREATE TABLE Foto(
-	IdFotos INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	IdFoto INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     
     UrlImagem VARCHAR(512),
     FraseFoto VARCHAR(60)
@@ -30,8 +30,8 @@ CREATE TABLE Foto(
 
 CREATE TABLE Pack(
 	IdPack  INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    IdFotos INT,
-    FOREIGN KEY (IdFotos) REFERENCES Fotos(IdFotos),
+    IdFoto INT,
+    FOREIGN KEY (IdFoto) REFERENCES Foto(IdFoto),
     
     
     TipoPack VARCHAR(15),
@@ -42,8 +42,6 @@ CREATE TABLE Pagamento(
 	IdPagamento INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     IdUsuario int,
     FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
-    IdPedido int,
-    FOREIGN KEY (IdPedido) REFERENCES Pedido(IdPedido),
     
     TipoPgto VARCHAR(50),
     ValorTotal FLOAT,
