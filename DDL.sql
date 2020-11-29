@@ -60,8 +60,9 @@ CREATE TABLE Pedido(
     IdCupom int,
 	FOREIGN KEY (IdCupom) REFERENCES Cupom(IdCupom),
     IdPagamento int,
-    FOREIGN KEY (IdPagamento) REFERENCES Pagamento(IdPagamento)
+    FOREIGN KEY (IdPagamento) REFERENCES Pagamento(IdPagamento),
     
+    StatusPedido VARCHAR(50)
 );
 
 CREATE TABLE PerfilAcesso(
