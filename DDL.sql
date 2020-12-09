@@ -1,20 +1,34 @@
 create database PixFourFun;
 USE PixFourFun;
+
+CREATE TABLE PerfilAcesso(
+	IdPerfilAcesso INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    
+    TipoPerfil VARCHAR(20)
+);
+
+INSERT INTO PerfilAcesso(TipoPerfil) VALUES
+	('Padrão'),
+    ('Administrador Geral'),
+    ('Administrador');
+    
 CREATE TABLE Usuario(
 	IdUsuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	IdPerfilAcesso int,
     FOREIGN KEY (IdPerfilAcesso) REFERENCES PerfilAcesso(IdPerfilAcesso),
     
-    
     Nome VARCHAR(100),
     Email VARCHAR(40),
     Senha VARCHAR(50),
-    Telefone VARCHAR(30)
+    Telefone VARCHAR(30),
+    Rua VARCHAR(100),
+	Numero VARCHAR(50),
+	Complemento VARCHAR(50),
+	CEP VARCHAR(50)
     );
 
 CREATE TABLE Cupom(
 	IdCupom INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    
     
     ValorDesconto FLOAT,
     DataValidade DATETIME,
@@ -32,7 +46,6 @@ CREATE TABLE Pack(
 	IdPack  INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     IdFoto INT,
     FOREIGN KEY (IdFoto) REFERENCES Foto(IdFoto),
-    
     
     TipoPack VARCHAR(15),
     Preco FLOAT
@@ -62,28 +75,3 @@ CREATE TABLE Pedido(
     
     StatusPedido VARCHAR(50)
 );
-
-CREATE TABLE Endereco(
-	IdEndereco INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    IdUsuario INT,
-    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
-    
-    Rua VARCHAR(100) NOT NULL,
-	Numero VARCHAR(50) NOT NULL,
-	Complemento VARCHAR(50),
-	Bairro VARCHAR(100) NOT NULL,
-	Cidade VARCHAR(100) NOT NULL,
-	UF VARCHAR(2) NOT NULL,
-	CEP VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE PerfilAcesso(
-	IdPerfilAcesso INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    
-    TipoPerfil VARCHAR(20)
-);
-
-INSERT INTO PerfilAcesso(TipoPerfil) VALUES
-	('Padrão'),
-    ('Administrador Geral'),
-    ('Administrador')
